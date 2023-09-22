@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{admin/base::layout(~{::section})}">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	
+	
+</head>
+<body>
+	<section class = "center">
+	
+	
+	
+			<h1>Update User</h1>
+			
+			<form th:action="@{/admin/updateuser}" method="post" th:object="${user}">
+    					
+    					<input type="hidden" th:value="${user.id}" name="id">
+    					
+    				
+    						Enter Name:
+    						<input type="text" name="name" th:value="${user.name}"
+    						class="form-control" required>
+    				
+    					<br><br>
+    						
+    						Enter Password:
+    						<input type="text" name="password" th:value="${user.password}"
+    						class="form-control" required>
+    				
+    					<br><br>
+    					
+							Enter Email:
+    						<input type="email" name="email" th:value="${user.email}"
+    						class="form-control" required>
+    				
+    					<br><br>
+    						
+    						Enter Phone No:
+    						<input type="number" name="phone" th:value="${user.phone}"
+    						class="form-control" required>
+    					
+    					<br><br>
+    					
+    						<input type = "submit" value="Update">
+    				
+    				
+    				</form>
+    				
+
+
+	<br>
+		
+	</section>
+</body>
+</html>

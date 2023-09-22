@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{admin/base::layout(~{::section})}">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	
+	
+</head>
+<body>
+	<section class = "center">
+	
+	
+	
+			<h1>All Voter's Details</h1>
+			
+			<div th:if=${session.msg}>
+			<h3 th:text="${session.msg}" style="color:red"></h3>
+   		
+				<th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+	
+   		</div>
+   		
+   		
+   		
+
+<div class="table-responsive">
+<table>
+
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Password</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone No.</th>
+      <th scope="col">Actions</th>
+    </tr>
+ 
+
+    <tr th:each="e: ${users}">
+      <td th:text="${e.id}"></td>
+      <td th:text="${e.name}"></td>
+      <td th:text="${e.password}"></td>    
+      <td th:text="${e.email}"></td>    
+      <td th:text="${e.phone}"></td>   
+        <td>
+      	<a th:href="@{/admin/edituser/{id}(id=${e.id})}"><img th:src="@{'/image/update.png'}" style="height:25px" alt="Update"></a>
+      	<a th:href="@{/admin/deleteuser/{id}(id=${e.id})}"><img th:src= "@{'/image/delete.jpg'}" style="height:25px" alt="Delete"></a>
+      </td>  
+    </tr>
+ 
+</table>
+  </div>
+
+    
+
+
+	<br>
+		
+	</section>
+</body>
+</html>

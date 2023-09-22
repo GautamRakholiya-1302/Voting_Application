@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{user/base::layout(~{::section})}">
+<head>
+	<meta charset="UTF-8" />
+	
+	
+
+
+<title>Document</title>
+</head>
+<body>
+	<section class = "center">
+	
+
+
+<h1>User Dashboard</h1>
+		
+   		
+   		
+<div class="container">
+  
+  <div class="layout">
+
+		<div class = "col col-main">
+		
+		
+   		
+   		<!-- 1st Col Start -->
+		
+		<table>
+						<h2>User Details:</h2>
+							<img th:src="@{/image/user.png}" height="125px" alt="User Icon">
+							
+					</table>
+						
+						<table border = '1' align='center'>
+							
+							<tr>
+								<th>Id: </th>
+							<th> <h4 th:text="${user.id}"></h4></th>
+							</tr>
+							
+							<tr>
+								<th>Name: </th>
+								<th> <h4 th:text="${user.name}"></h4></th>
+							</tr>
+							
+							
+						
+								<tr>
+									<th>Email Id: </th>
+									<th><h4 th:text="${user.email}"></h4> </th>
+								</tr>
+					
+								<tr>
+									<th>Phone No.: </th>
+									<th><h4 th:text="${user.phone}"></h4> </th>
+								</tr>
+								
+								<tr>
+									<th>Status.: </th>
+									<th><h4 th:text="${status}"></h4> </th>
+								</tr>
+
+								
+				
+						</table>
+		
+		<!-- 1st Col End  -->
+		
+		</div>
+	
+	<div class = "col col-complementary">
+
+<!-- 2nd Col start -->
+
+<form th:action = "@{/addcandidate}" method ="post">
+
+<div th:if=${session.msg}>
+			<h3 th:text="${session.msg}" style="color:red"></h3>
+   		
+				<th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+	
+   		</div>
+   		
+		
+ <h4 style="color:red" th:text="${user.name}"> </h4> 
+
+	Do Voting<br>
+	
+	<input th:value="${user.email}" name = "email" type="hidden" >
+ <br>
+ <input type="radio" name="candidate"  value ="candidate1" required>Candidate 1  <br><br>
+  <input type="radio" name="candidate"  value = "candidate2" required>Candidate 2 <br><br>
+  <input type="radio" name="candidate"  value = "candidate3" required>Candidate 3 <br><br>
+  <input type="radio" name="candidate"  value = "candidate4" required>Candidate 4 <br><br>
+    
+    <br>
+ 
+
+
+<input type = "submit" value="Vote">
+
+</form>
+
+<!-- 2nd Col End -->
+
+</div>
+</div>
+</div>
+
+	<br>	
+	</section>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{admin/base::layout(~{::section})}">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	
+	
+</head>
+<body>
+	<section class = "center">
+	
+	
+	
+			<h1>Candidate's Vote Details</h1>
+			
+			<div th:if=${session.msg}>
+			<h3 th:text="${session.msg}" style="color:red"></h3>
+   		
+				<th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+	
+   		</div>
+   		
+   		
+   		
+<div class="table-responsive">
+
+<table >
+    <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Candidate 1 Votes</th>
+      <th scope="col">Candidate 2 Votes</th>
+      <th scope="col">Candidate 3 Votes</th>
+      <th scope="col">Candidate 4 Votes</th>
+      <th scope="col">Actions</th>
+    </tr>
+ </thead>
+<tbody>
+    <tr th:each="e: ${candidates}">
+      <td style="background-color:#ebe9eb">Voters</td>
+      <td th:text="${e.candidate1}"></td>
+      <td th:text="${e.candidate2}"></td>    
+      <td th:text="${e.candidate3}"></td>    
+      <td th:text="${e.candidate4}"></td>   
+        <td>
+      	<a th:href="@{/admin/deletecandidate/{id}(id=${e.id})}"><img th:src= "@{'/image/delete.jpg'}" style="height:25px" alt="Delete"></a>
+      </td>  
+    </tr>
+    
+    <tr>
+      <td style="background-color:#ebe9eb">Total Votes</td>
+      <td scope="col"><p th:text="${c1}"></p></td>
+      <td scope="col"><p th:text="${c2}"></p></td>
+      <td scope="col"><p th:text="${c3}"></p></td>
+      <td scope="col"><p th:text="${c4}"></p></td>
+    </tr>
+ </tbody>
+ 
+</table>
+  
+</div>
+    
+
+
+	<br>
+		
+	</section>
+</body>
+</html>

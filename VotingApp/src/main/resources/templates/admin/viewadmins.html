@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{admin/base::layout(~{::section})}">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	
+	
+</head>
+<body>
+	<section class = "center">
+	
+	
+	
+			<h1>Admin Details</h1>
+			
+			<div th:if=${session.msg}>
+			<h3 th:text="${session.msg}" style="color:red"></h3>
+   		
+				<th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+	
+   		</div>
+   		
+   		
+   		
+
+<div class="table-responsive">
+<table>
+
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Admin Name</th>
+      <th scope="col">Password</th>
+    </tr>
+ 
+
+    <tr th:each="e: ${admins}">
+      <td th:text="${e.id}"></td>
+      <td th:text="${e.name}"></td>
+      <td th:text="${e.password}"></td>    
+    </tr>
+ 
+</table>
+  
+<div class="table-responsive">
+    
+
+
+	<br>
+		
+	</section>
+</body>
+</html>
